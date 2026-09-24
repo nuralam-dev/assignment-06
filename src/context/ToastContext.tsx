@@ -35,7 +35,7 @@ export const ToastProvider = ({
       {children}
 
       {message && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase text-black shadow-lg">
+        <div className="fixed right-6 top-6 z-50 rounded-xl bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase text-black shadow-lg">
           {message}
         </div>
       )}

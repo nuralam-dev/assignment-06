@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+
 import { getWorkoutById } from "@/lib/api";
 import WorkoutActions from "@/components/WorkoutActions";
 
@@ -15,6 +17,11 @@ export default async function WorkoutDetailsPage({
   const { id } = await params;
 
   const workout = await getWorkoutById(id);
+
+  // Workout না পাওয়া গেলে 404 page দেখাবে
+  if (!workout) {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen px-4 py-10 md:px-6 lg:py-16">
@@ -74,6 +81,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Equipment
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.equipment}
                 </p>
@@ -83,6 +91,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Difficulty
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.difficulty}
                 </p>
@@ -92,6 +101,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Sets
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.sets}
                 </p>
@@ -101,6 +111,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Reps
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.reps}
                 </p>
@@ -110,6 +121,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Duration
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.duration} min
                 </p>
@@ -119,6 +131,7 @@ export default async function WorkoutDetailsPage({
                 <p className="text-xs uppercase text-gray-500">
                   Calories
                 </p>
+
                 <p className="mt-2 text-sm font-bold">
                   {workout.caloriesBurned}
                 </p>
@@ -128,7 +141,9 @@ export default async function WorkoutDetailsPage({
 
             {/* Rating */}
             <div className="mt-6 flex items-center gap-2">
-              <span className="text-[var(--accent)]">★</span>
+              <span className="text-[var(--accent)]">
+                ★
+              </span>
 
               <span className="font-bold">
                 {workout.rating}
@@ -156,22 +171,23 @@ export default async function WorkoutDetailsPage({
           </h2>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {workout.instructions.map((instruction, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
-              >
-                <span className="text-sm font-black text-[var(--accent)]">
-                  0{index + 1}
-                </span>
+            {workout.instructions.map(
+              (instruction, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
+                >
+                  <span className="text-sm font-black text-[var(--accent)]">
+                    0{index + 1}
+                  </span>
 
-                <p className="mt-3 leading-7 text-gray-400">
-                  {instruction}
-                </p>
-              </div>
-            ))}
+                  <p className="mt-3 leading-7 text-gray-400">
+                    {instruction}
+                  </p>
+                </div>
+              )
+            )}
           </div>
-
         </section>
       </div>
     </main>
