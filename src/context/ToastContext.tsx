@@ -47,7 +47,9 @@ export const useToast = () => {
   const context = useContext(ToastContext);
 
   if (!context) {
-    throw new Error("useToast must be used inside ToastProvider");
+    return {
+      showToast: (msg: string) => console.warn("Toast Context not provided:", msg),
+    };
   }
 
   return context;
