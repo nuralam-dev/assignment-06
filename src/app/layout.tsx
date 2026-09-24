@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { FitLogProvider } from "@/context/FitLogContext";
+import { ToastProvider } from "@/context/ToastContext";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "FitLog",
@@ -20,13 +21,15 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <FitLogProvider>
-          <Suspense fallback={null}>
-            <Navbar />
-          </Suspense>
+          <ToastProvider>
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
 
-          {children}
+            {children}
 
-          <Footer />
+            <Footer />
+          </ToastProvider>
         </FitLogProvider>
       </body>
     </html>
