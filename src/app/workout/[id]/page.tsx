@@ -16,7 +16,7 @@ export default async function WorkoutDetailsPage({
 }: WorkoutDetailsPageProps) {
   const { id } = await params;
 
-  const workout = await getWorkoutById(id);
+  const workout = await getWorkoutById(Number(id));
 
   if (!workout) {
     notFound();
