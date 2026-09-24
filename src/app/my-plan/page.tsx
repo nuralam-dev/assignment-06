@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaCheck, FaXmark } from "react-icons/fa6";
-
+import { useToast } from "@/context/ToastContext";
 import { useFitLog } from "@/context/FitLogContext";
 
 const MyPlanPage = () => {
@@ -22,6 +22,7 @@ const MyPlanPage = () => {
   );
 
   const workouts = activeTab === "plan" ? plan : saved;
+  const { showToast } = useToast();
 
   return (
     <main className="min-h-screen bg-black px-4 py-12 text-white sm:px-6 lg:px-8">
@@ -146,22 +147,29 @@ const MyPlanPage = () => {
 
                   {activeTab === "plan" && (
                     <button
-                      type="button"
-                      onClick={() => removeFromPlan(workout.id)}
-                      className="flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-2 text-xs font-bold uppercase text-black"
-                    >
-                      <FaCheck />
-                      Mark as Done
-                    </button>
+  type="button"
+  onClick={() => {
+    removeFromPlan(workout.id);
+    showToast("Workout marked as done");
+  }}
+  className="flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-2 text-xs font-bold uppercase text-black"
+>
+  <FaCheck />
+  Mark as Done
+</button>
                   )}
 
                   <button
                     type="button"
-                    onClick={() =>
-                      activeTab === "plan"
-                        ? removeFromPlan(workout.id)
-                        : removeFromSaved(workout.id)
-                    }
+                    onClick={() => {
+  if (activeTab === "plan") {
+    removeFromPlan(workout.id);
+    showToast("Removed from plan");
+  } else {
+    removeFromSaved(workout.id);
+    showToast("Removed from saved");
+  }
+}}
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-red-400 hover:text-red-400"
                     aria-label="Remove workout"
                   >
