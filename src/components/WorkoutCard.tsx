@@ -9,7 +9,7 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
       href={`/workout/${workout.id}`}
       className="group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]"
     >
-      {/* Image */}
+      
       <div className="relative h-60 overflow-hidden">
         <Image
           src={workout.image}
@@ -18,10 +18,7 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
           className="object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
-
-      {/* Content */}
       <div className="space-y-4 p-5">
-        {/* Muscle Groups */}
         <div className="flex flex-wrap gap-2">
           {workout.muscleGroups.map((muscle) => (
             <span
@@ -33,15 +30,10 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
           ))}
         </div>
 
-        {/* Name */}
         <h3 className="text-xl font-bold uppercase tracking-tight">
           {workout.name}
         </h3>
-
-        {/* Equipment */}
         <p className="text-sm text-gray-400">{workout.equipment}</p>
-
-        {/* Stats */}
         <div className="grid grid-cols-3 gap-3 border-t border-[var(--border)] pt-4">
           <div>
             <p className="text-xs uppercase text-gray-500">Duration</p>

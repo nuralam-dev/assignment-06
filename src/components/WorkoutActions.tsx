@@ -25,7 +25,7 @@ const WorkoutActions = ({ workout }: { workout: Workout }) => {
 
   return (
     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-      {/* Plan */}
+      
       <button
         type="button"
         onClick={() => {
@@ -42,7 +42,6 @@ const WorkoutActions = ({ workout }: { workout: Workout }) => {
             : "Add to today's plan"}
       </button>
 
-      {/* Saved */}
       <button
         type="button"
         onClick={() => {

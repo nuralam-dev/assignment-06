@@ -29,7 +29,6 @@ const WorkoutLibrary = ({
 
   return (
     <div className="mt-10">
-      {/* Sorting Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-gray-400">
           Showing {sortedWorkouts.length} workouts
@@ -67,8 +66,6 @@ const WorkoutLibrary = ({
           </select>
         </div>
       </div>
-
-      {/* Workout Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sortedWorkouts.map((workout) => (
           <WorkoutCard

@@ -6,8 +6,6 @@ const Hero = () => {
     <section className="px-4 py-8 md:px-8">
       <div className="mx-auto max-w-7xl rounded-3xl bg-[#121318] p-8 md:p-12 lg:p-16 border border-[#21232b]">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          
-          {/* Content */}
           <div className="flex flex-col items-start">
             <p className="mb-6 text-xs font-bold uppercase tracking-[0.25em] text-[#A3E635]">
               Workout Library
@@ -32,7 +30,6 @@ const Hero = () => {
             </Link>
           </div>
 
-          {/* Image */}
           <div className="relative flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-[450px] aspect-square">
               <Image

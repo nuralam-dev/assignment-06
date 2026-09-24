@@ -18,7 +18,6 @@ export default async function WorkoutDetailsPage({
 
   const workout = await getWorkoutById(id);
 
-  // Workout না পাওয়া গেলে 404 page দেখাবে
   if (!workout) {
     notFound();
   }
@@ -27,18 +26,14 @@ export default async function WorkoutDetailsPage({
     <main className="min-h-screen px-4 py-10 md:px-6 lg:py-16">
       <div className="mx-auto max-w-7xl">
 
-        {/* Back */}
         <Link
           href="/#library"
           className="mb-8 inline-block text-sm font-bold uppercase text-gray-400 hover:text-[var(--accent)]"
         >
           ← Back to library
         </Link>
-
-        {/* Main Content */}
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
 
-          {/* Image */}
           <div className="relative h-[400px] overflow-hidden rounded-2xl md:h-[550px]">
             <Image
               src={workout.image}
@@ -49,10 +44,7 @@ export default async function WorkoutDetailsPage({
             />
           </div>
 
-          {/* Details */}
           <div className="flex flex-col justify-center">
-
-            {/* Muscle Groups */}
             <div className="flex flex-wrap gap-2">
               {workout.muscleGroups.map((muscle) => (
                 <span
@@ -64,17 +56,14 @@ export default async function WorkoutDetailsPage({
               ))}
             </div>
 
-            {/* Title */}
             <h1 className="mt-5 text-4xl font-black uppercase leading-tight md:text-6xl">
               {workout.name}
             </h1>
 
-            {/* Description */}
             <p className="mt-5 leading-7 text-gray-400">
               {workout.description}
             </p>
 
-            {/* Specs */}
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
 
               <div className="rounded-xl border border-[var(--border)] p-4">
@@ -139,7 +128,6 @@ export default async function WorkoutDetailsPage({
 
             </div>
 
-            {/* Rating */}
             <div className="mt-6 flex items-center gap-2">
               <span className="text-[var(--accent)]">
                 ★
@@ -154,12 +142,11 @@ export default async function WorkoutDetailsPage({
               </span>
             </div>
 
-            {/* Buttons */}
+            
             <WorkoutActions workout={workout} />
           </div>
         </div>
 
-        {/* Instructions */}
         <section className="mt-20 border-t border-[var(--border)] pt-12">
 
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--accent)]">

@@ -23,15 +23,12 @@ const MyPlanPage = () => {
   const [sortBy, setSortBy] =
     useState<SortOption>("duration");
 
-  // URL দেখে active tab নির্ধারণ হবে
   const activeTab =
     searchParams.get("tab") === "saved" ? "saved" : "plan";
 
-  // Current tab-এর workout
   const currentWorkouts =
     activeTab === "plan" ? plan : saved;
 
-  // Sorting
   const sortedWorkouts = [...currentWorkouts].sort(
     (a, b) => {
       if (sortBy === "duration") {
@@ -42,12 +39,10 @@ const MyPlanPage = () => {
         return a.caloriesBurned - b.caloriesBurned;
       }
 
-      // Rating: বেশি rating আগে
       return b.rating - a.rating;
     }
   );
 
-  // Today's Plan metrics
   const totalMinutes = plan.reduce(
     (total, workout) => total + workout.duration,
     0
@@ -62,7 +57,6 @@ const MyPlanPage = () => {
     <main className="min-h-screen bg-[#0a0a0c] text-white">
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:py-16">
 
-        {/* Page Header */}
         <div>
           <h1 className="text-4xl font-black uppercase sm:text-5xl">
             My Plan
@@ -73,10 +67,8 @@ const MyPlanPage = () => {
           </p>
         </div>
 
-        {/* Metrics */}
         <div className="mt-8 grid overflow-hidden rounded-2xl border border-white/10 bg-[#111217] sm:grid-cols-3">
 
-          {/* Exercises */}
           <div className="border-b border-white/10 p-6 sm:border-b-0 sm:border-r">
             <p className="text-sm text-white/50">
               Exercises
@@ -87,7 +79,6 @@ const MyPlanPage = () => {
             </p>
           </div>
 
-          {/* Minutes */}
           <div className="border-b border-white/10 p-6 sm:border-b-0 sm:border-r">
             <p className="text-sm text-white/50">
               Minutes
@@ -98,7 +89,6 @@ const MyPlanPage = () => {
             </p>
           </div>
 
-          {/* Calories */}
           <div className="p-6">
             <p className="text-sm text-white/50">
               Calories
@@ -110,10 +100,8 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Tabs + Sort */}
         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-          {/* Tabs */}
           <div className="flex w-fit rounded-xl border border-white/10 bg-[#15171e] p-1">
 
             <Link
@@ -139,7 +127,7 @@ const MyPlanPage = () => {
             </Link>
           </div>
 
-          {/* Sort */}
+          
           <div className="flex items-center gap-3">
             <label
               htmlFor="sort"
@@ -173,7 +161,6 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Workout List */}
         <div className="mt-7 space-y-4">
 
           {sortedWorkouts.length === 0 ? (
@@ -201,7 +188,6 @@ const MyPlanPage = () => {
                 className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#111217] p-4 transition hover:border-white/20 sm:flex-row sm:items-center"
               >
 
-                {/* Workout Image */}
                 <div className="relative h-32 w-full shrink-0 overflow-hidden rounded-xl sm:w-48">
                   <Image
                     src={workout.image}
@@ -211,7 +197,6 @@ const MyPlanPage = () => {
                   />
                 </div>
 
-                {/* Workout Information */}
                 <div className="min-w-0 flex-1">
 
                   <h2 className="text-xl font-black uppercase">
@@ -239,10 +224,9 @@ const MyPlanPage = () => {
                   </div>
                 </div>
 
-                {/* Actions */}
+             
                 <div className="flex items-center gap-3 sm:shrink-0">
 
-                  {/* View Details */}
                   <Link
                     href={`/workout/${workout.id}`}
                     className="rounded-full border border-white/20 px-5 py-2.5 text-xs font-bold uppercase transition hover:border-white/50"
@@ -250,7 +234,6 @@ const MyPlanPage = () => {
                     View Details
                   </Link>
 
-                  {/* Mark as Done */}
                   {activeTab === "plan" && (
                     <button
                       type="button"
@@ -265,7 +248,6 @@ const MyPlanPage = () => {
                     </button>
                   )}
 
-                  {/* Remove */}
                   <button
                     type="button"
                     onClick={() => {

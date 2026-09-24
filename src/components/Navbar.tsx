@@ -24,7 +24,6 @@ const Navbar = () => {
     <header className="border-b border-white/10 bg-[#0a0a0c]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
 
-        {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-2.5 text-xl font-black tracking-wider text-white"
@@ -43,7 +42,6 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Navigation */}
         <div className="hidden items-center gap-8 md:flex">
           <Link
             href="/"
@@ -68,9 +66,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Action Counters */}
         <div className="flex items-center gap-3">
-          {/* Plan */}
+   
           <Link
             href="/my-plan"
             className={`rounded-full px-4 py-2 text-xs font-black uppercase transition ${
@@ -82,7 +79,6 @@ const Navbar = () => {
             Plan {plan.length}
           </Link>
 
-          {/* Saved */}
           <Link
             href="/my-plan?tab=saved"
             className={`rounded-full border px-4 py-2 text-xs font-black uppercase transition ${
